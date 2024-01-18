@@ -29,7 +29,7 @@ require("plugins.plugin-config.neo-tree")
 require("plugins.plugin-config.completions")
 require("plugins.plugin-config.lualine")
 require("plugins.plugin-config.toggleterm")
---require("plugins.plugin-config.java")
+require("plugins.plugin-config.dap")
 require("config.autocmds")
 
 

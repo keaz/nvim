@@ -4,8 +4,8 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-                                  install_path})
+    PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
     print("Installing packer close and reopen Neovim...")
 end
 
@@ -38,8 +38,8 @@ packer.init({
 packer.startup(function(use)
     -- My plugins here
     use 'wbthomason/packer.nvim' -- Have packer manage itself
-    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
 
     use({
         'williamboman/mason.nvim',
@@ -52,11 +52,11 @@ packer.startup(function(use)
                         package_uninstalled = "✗"
                     }
                 },
-                ensure_installed = {"jdtls"}
+                ensure_installed = { "jdtls" }
             })
         end
     })
-    use({'williamboman/mason-lspconfig.nvim'})
+    use({ 'williamboman/mason-lspconfig.nvim' })
 
     -- Autocompletion framework
     use("hrsh7th/nvim-cmp")
@@ -73,8 +73,8 @@ packer.startup(function(use)
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
         "hrsh7th/vim-vsnip",
-        after = {"hrsh7th/nvim-cmp"},
-        requires = {"hrsh7th/nvim-cmp"}
+        after = { "hrsh7th/nvim-cmp" },
+        requires = { "hrsh7th/nvim-cmp" }
     })
     use({
         'nvim-treesitter/nvim-treesitter',
@@ -82,13 +82,13 @@ packer.startup(function(use)
     })
     use({
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-ui-select.nvim'}}
+        requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-ui-select.nvim' } }
     })
-    use({'nvim-telescope/telescope-ui-select.nvim'})
+    use({ 'nvim-telescope/telescope-ui-select.nvim' })
     use({
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make',
-        before = {'nvim-telescope/telescope.nvim'}
+        before = { 'nvim-telescope/telescope.nvim' }
     })
 
     use 'neovim/nvim-lspconfig'
@@ -96,33 +96,33 @@ packer.startup(function(use)
     use 'anott03/nvim-lspinstall'
     use({
         'simrat39/rust-tools.nvim',
-        requires = {'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'},
+        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter' },
     })
-    use ({"mfussenegger/nvim-jdtls"})
+    use({ "mfussenegger/nvim-jdtls" })
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
     use({
         'jay-babu/mason-nvim-dap.nvim',
-        requires = {'mason.nvim'},
-        cmd = {'DapInstall', 'DapUninstall'}
+        requires = { 'mason.nvim' },
+        cmd = { 'DapInstall', 'DapUninstall' }
     })
 
     use({
         'nvim-neo-tree/neo-tree.nvim',
-        requires = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim'}
+        requires = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' }
     })
 
     use 'github/copilot.vim'
     use 'catppuccin/nvim'
-    use ({
+    use({
         'nvim-lualine/lualine.nvim',
         requires = {
             'kyazdani42/nvim-web-devicons',
             opt = true
         }
     })
-    use ({
+    use({
         "akinsho/toggleterm.nvim",
     })
 
@@ -130,4 +130,3 @@ packer.startup(function(use)
         require('packer').sync()
     end
 end)
-
