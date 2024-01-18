@@ -24,8 +24,23 @@ require("plugins.plugin-config.colorscheme")
 require("plugins.plugin-config.mason")
 require("plugins.plugin-config.nvim-lspconfig")
 require("plugins.plugin-config.telescope")
-require("plugins.plugin-config.rust-tools")
+--require("plugins.plugin-config.rust-tools")
 require("plugins.plugin-config.neo-tree")
 require("plugins.plugin-config.completions")
 require("plugins.plugin-config.lualine")
+require("plugins.plugin-config.toggleterm")
+--require("plugins.plugin-config.java")
 require("config.autocmds")
+
+
+local signs = {
+    Error = " ", -- U+f659
+    Warn = " ", -- U+f529
+    Hint = " ", -- U+f835
+    Info = " " -- U+f449
+}
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

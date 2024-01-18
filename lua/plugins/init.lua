@@ -96,8 +96,9 @@ packer.startup(function(use)
     use 'anott03/nvim-lspinstall'
     use({
         'simrat39/rust-tools.nvim',
-        requires = {'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'}
+        requires = {'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'},
     })
+    use ({"mfussenegger/nvim-jdtls"})
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
@@ -109,11 +110,9 @@ packer.startup(function(use)
 
     use({
         'nvim-neo-tree/neo-tree.nvim',
-        branch = "v3.x",
         requires = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim'}
     })
 
-    use 'puremourning/vimspector'
     use 'github/copilot.vim'
     use 'catppuccin/nvim'
     use ({
@@ -123,19 +122,12 @@ packer.startup(function(use)
             opt = true
         }
     })
+    use ({
+        "akinsho/toggleterm.nvim",
+    })
 
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
 end)
 
-require("lspconfig").rust_analyzer.setup {
-    on_attach = function(_, bufnr)
-        -- Format on save
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', {
-            noremap = true,
-            silent = true
-        })
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-}
