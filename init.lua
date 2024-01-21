@@ -30,7 +30,9 @@ require("plugins.plugin-config.completions")
 require("plugins.plugin-config.lualine")
 require("plugins.plugin-config.toggleterm")
 require("plugins.plugin-config.dap")
+require("plugins.plugin-config.bufferline")
 require("config.autocmds")
+require("config.keymaps")
 
 
 local signs = {
